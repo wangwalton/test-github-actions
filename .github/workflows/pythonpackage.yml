@@ -1,12 +1,14 @@
 name: Python package
 
 on:
+  push:
   workflow_dispatch:
     inputs:
-      job:
-        description: "Job to run."
+      publish-dj-server:
+        description: "Generate dj-server image"
+        type: boolean
         required: true
-        default: "prod-deploy"
+        default: true
 
 jobs:
   build:
@@ -20,7 +22,7 @@ jobs:
           python-version: 3.7
 
   publish:
-    needs: build
+    if: ${{ github.event.inputs.publish-dj-server }}
     runs-on: ubuntu-latest
     environment: publish
     steps:
