@@ -1,6 +1,12 @@
 name: Python package
 
-on: ["push"]
+on:
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "Job to run."
+        required: true
+        default: "prod-deploy"
 
 jobs:
   build:
