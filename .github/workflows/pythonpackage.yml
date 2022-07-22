@@ -30,7 +30,7 @@ jobs:
       - run: echo ${{ github.event_name }}
 
   publish:
-    if: github.event.inputs.publish-dj-server || github.event.ref == 'refs/heads/develop' || github.event.ref == 'refs/heads/master'
+    if: github.event.inputs.publish-dj-server || github.event_name == 'release' || github.event.ref == 'refs/heads/develop' || github.event.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     environment: publish
     steps:
