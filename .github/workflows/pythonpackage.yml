@@ -3,6 +3,7 @@ name: Python package
 on:
   release:
     types: [published]
+
   push:
   workflow_dispatch:
     inputs:
@@ -16,7 +17,7 @@ jobs:
   dump:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{ toJSON(github.event) }}'
+      - run: echo ${{ github.event_name }}
 
   build:
     runs-on: ubuntu-latest
@@ -30,7 +31,7 @@ jobs:
       - run: echo ${{ github.event_name }}
 
   publish:
-    if: github.event.inputs.publish-dj-server || github.event.ref == 'refs/heads/develop' || github.event.ref == 'refs/heads/master'
+    if: github.event_name == "release" || github.event.inputs.publish-dj-server || github.event.ref == 'refs/heads/develop' || github.event.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     environment: publish
     steps:
