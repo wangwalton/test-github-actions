@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.7
+      - run: echo ${{ github.event_name }}
 
   publish:
     if: ${{ github.event.inputs.publish-dj-server }}
