@@ -14,7 +14,7 @@ jobs:
   dump:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github }}
+      - run: echo '${{ github }}'
 
   build:
     runs-on: ubuntu-latest
