@@ -1,8 +1,6 @@
 name: Python package
 
 on:
-  release:
-    types: [published]
   push:
   workflow_dispatch:
     inputs:
@@ -16,7 +14,7 @@ jobs:
   dump:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.event_name }}
+      - run: echo ${{ github }}
 
   build:
     runs-on: ubuntu-latest
