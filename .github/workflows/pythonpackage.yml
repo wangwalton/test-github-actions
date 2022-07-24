@@ -34,7 +34,7 @@ jobs:
             echo "$file was changed"
           done
       - name: Print all files
-        run: echo '${{ steps.changed-files.outputs }'}
+        run: echo '${{ steps.changed-files.outputs }}''
 
   publish:
     if: github.event.inputs.publish-dj-server || startsWith(github.ref, 'refs/tags/')  || github.event.ref == 'refs/heads/develop' || github.event.ref == 'refs/heads/master'
